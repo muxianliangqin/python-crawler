@@ -80,7 +80,8 @@ def crawl_text(conn, browser):
             c_ks[category_id] = [k[0] for k in keywords]
         browser.get(url)
         html = browser.find_element_by_xpath(xpath)
-        text = html.text.strip()
+        text = html.get_attribute('innerHTML')
+        # text = html.text.strip()
         links = html.find_elements_by_tag_name('a')
         for link in links:
             href = link.get_attribute('href')
